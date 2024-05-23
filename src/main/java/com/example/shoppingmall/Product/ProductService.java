@@ -23,8 +23,14 @@ public class ProductService {
     }
 
 //    public Product findProduct(int id) {
-//        return productRepository.findByProductId(id);
+//        return productRepository.findById(id);
 //    }
+    public List<Product> findProducts(){
+        return productRepository.findAll();
+    }
+    public List<Product> findProducts(Integer categoryId) {
+        return productRepository.findByCategoryId(categoryId);
+    }
 
 //    public List<Product> findProductsByCategoryId(Integer categoryId, int limit, int currentPage) {
 //        Pageable pageable = PageRequest.of(currentPage - 1, limit);
