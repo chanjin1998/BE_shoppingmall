@@ -24,10 +24,10 @@ public class MemberController {
 
     MemberService memberService;
 
-    @GetMapping("/data")
-    public void makeConnection(){
-        memberService.makeConnection();
-    }
+//    @GetMapping("/data")
+//    public void makeConnection(){
+//        memberService.makeConnection();
+//    }
 
     //    @PostMapping("/join/res/en") // Before
 //    public ResponseEntity<String> joinByResponseEntity(@RequestBody Member member) {
@@ -58,9 +58,9 @@ public class MemberController {
          * }
          */
     }
-    @PostMapping("login")
-    public void login(@RequestBody LoginDTO loginDTO){
-        boolean loginResult = memberService.login(loginDTO.getUserId(), loginDTO.getPw());
+//    @PostMapping("login")
+//    public void login(@RequestBody LoginDTO loginDTO){
+//        boolean loginResult = memberService.login(loginDTO.getUserId(), loginDTO.getPw());
 
 //        if (loginResult) {
 //            // 로그인 성공 시 홈 페이지로 리디렉션
@@ -70,7 +70,7 @@ public class MemberController {
 //            redirectAttributes.addFlashAttribute("error", "Invalid username or password");
 //            System.out.println("로그인 실패");;
 //        }
-    }
+//    }
 
     // 유효성 검사하다가 에러가 터지면 호출되는 예외 처리 메소드
     // MethodArgumentNotValidException 예외 처리
