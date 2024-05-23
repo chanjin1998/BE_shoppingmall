@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.QueryByExampleExecutor;
 import java.util.Optional;
 
 public interface MemberJPARepository extends JpaRepository<Member,Integer> {
-    Optional<Member> findByUserId(String userId){
+    Optional<Member> findByUserId(String userId);
 
-    }
 }
