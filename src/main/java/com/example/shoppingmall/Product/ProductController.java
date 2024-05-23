@@ -45,24 +45,28 @@ public class ProductController {
             return error("상품명과 가격이 잘못되었습니다.",HttpStatus.BAD_REQUEST);
     }
 
-    // 상품 전체, 카테고리별 조회
-    // 상품 전체조회
-//    @GetMapping("/products")
-//    public ResponseEntity<List<Product>> findProducts(@RequestParam ("limit") int limit, @RequestParam("currentPage") int currentPage, @RequestParam(value="categoryId",required=false) Integer categoryId) {
-//
-//        log.info("limit = {}", limit);
-//        log.info("currentPage = {}", currentPage);
-//        log.info("categoryId = {}", categoryId);
-//
-//        List<Product> products;
-//
-//        if (categoryId == null){
-//            products = productService.findProducts(limit, currentPage);
-//        }
-//        products = productService.findProducts(limit, currentPage);
-//        return new ResponseEntity<>(products,HttpStatus.OK);
-//
 //    }
+    // 상품 전체, 카테고리별 조회
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> findProducts(
+            @RequestParam("limit") int limit,
+            @RequestParam("currentPage") int currentPage,
+            @RequestParam(value = "categoryId", required = false) Integer categoryId
+    ) {
+        log.info("limit = {}", limit);
+        log.info("currentPage = {}", currentPage);
+        log.info("categoryId = {}", categoryId);
+
+        // TODO null 체크는 어디서 해야할까?
+        if(categoryId == null) {
+            List<Product> products = productService.findProducts();
+            return new ResponseEntity<>(products, HttpStatus.OK);
+        } else {
+            List<Product> products = productService.findProducts(categoryId);
+            System.out.println(products.get(0));
+            return new ResponseEntity<>(products, HttpStatus.OK);
+        }
+    }
 
     // 상품 개별 조회
     // 상품 찾는 방법
