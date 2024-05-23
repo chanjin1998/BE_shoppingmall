@@ -33,17 +33,22 @@ public class ProductRepository {
 //    public List<Product> findByCategoryId(Integer categoryId, Pageable pageable) {
 //    }
 
-//    public List<Product> findProducts(int limit, int currentPage) {
-//        //MAP -> Stream -> List
-//        // limit 4이고 currentPage가 1일때 0~3 (currentPage - 1) * limit = 첫번쨰 index
-////        return productTable.values().stream().toList();
-//        return productJPARepository.findProducts(limit,currentPage);
-//    }
+    public List<Product> findAll() {
+        //MAP -> Stream -> List
+        // limit 4이고 currentPage가 1일때 0~3 (currentPage - 1) * limit = 첫번쨰 index
+//        return productTable.values().stream().toList();
+        return productJPARepository.findAll();
+    }
+
+    public List<Product> findByCategoryId(Integer categoryId) {
+        return productJPARepository.findByCategoryId(categoryId);
+    }
+
 //    public List<Product> findProducts(int limit, int currentPage, int categoryId) {
-////        List<Product> resultProducts = new ArrayList<>();
-////        for (Product product : product_table.values()){
-////            if (product.getCategoryId() == categoryId)
-////                resultProducts.add(product);
+//        List<Product> resultProducts = new ArrayList<>();
+//        for (Product product : product_table.values()){
+//            if (product.getCategoryId() == categoryId)
+//                resultProducts.add(product);
 ////        }
 //        int startIdx = (currentPage - 1) * limit;
 //        int endIdx = Math.min(startIdx + limit, productTable.size());
