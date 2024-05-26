@@ -44,7 +44,13 @@ public class ProductController {
         } else
             return error("상품명과 가격이 잘못되었습니다.",HttpStatus.BAD_REQUEST);
     }
-
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Product> findProduct(@PathVariable(value = "id") int id) {
+        Product resultProduct = productService.findProduct(id);
+        if (resultProduct == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(resultProduct,HttpStatus.OK);
+    }
 //    }
     // 상품 전체, 카테고리별 조회
     @GetMapping("/products")
@@ -102,12 +108,4 @@ public class ProductController {
     // 1인 과제
     // 1. Product 반환 필드 : id가 없다.
     // 2. id 숫자만 들어온 거 맞는지 유효성 검사 추가
-
-//    @GetMapping("/products/{id}")
-//    public ResponseEntity<Product> findProduct(@PathVariable(value = "id") int id) {
-//        Product resultProduct = productService.findProduct(id);
-//        if (resultProduct == null)
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        return new ResponseEntity<>(resultProduct,HttpStatus.OK);
-//    }
 }
